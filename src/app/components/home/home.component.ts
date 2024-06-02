@@ -37,7 +37,6 @@ export class HomeComponent {
       (response: any) => {
         this.movieDetails = response;
         this.movies = []; // Clear previous search results
-        console.log(this.movieDetails);
       },
       (error) => {
         console.error('Error fetching movie details:', error);

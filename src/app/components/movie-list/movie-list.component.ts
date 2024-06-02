@@ -47,8 +47,6 @@ export class MovieListComponent {
         movieName: this.newMovieName,
         public: this.newMoviePublic
       };
-      console.log(this.newMovieName);
-      console.log(this.newMoviePublic);
       const token = localStorage.getItem('token');
       // Here you would call the service to save the new movie to the backend
       if (token) {
@@ -71,23 +69,4 @@ export class MovieListComponent {
     }
   }
 
-  // ngOnInit(): void {
-  //   const token = localStorage.getItem('token');
-  //   if (token) {
-  //     this.authService.getMovieLists().subscribe(
-  //       (data: any) => {
-  //         // console.log(data);
-
-  //         this.movieLists.push = data.movieList;
-  //         console.log(this.movieLists);
-  //       },
-  //       (error) => {
-  //         console.error('Error fetching movie lists:', error);
-  //         this.snackBar.open('Error fetching movie lists. Please try again.', 'Close', { duration: 3000 });
-  //       }
-  //     );
-  //   } else {
-  //     this.snackBar.open('You need to log in first.', 'Close', { duration: 3000 });
-  //   }
-  // }
 }
