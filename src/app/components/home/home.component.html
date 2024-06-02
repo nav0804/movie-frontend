@@ -1,0 +1,58 @@
+<!-- src/app/components/home/home.component.html -->
+<div class="home-container">
+  <h2>Search Movies</h2>
+  
+  <mat-form-field>
+    <input matInput placeholder="Search by Name or ID" [(ngModel)]="query" name="query">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="searchMovies()">Search by Name</button>
+  <button mat-raised-button color="primary" (click)="searchMoviesById()">Search by ID</button>
+  <div class="logout-container">
+    <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+  </div>
+  <div class="movie-results" *ngIf="movies.length > 0">
+    <h3>Search Results:</h3>
+    <div class="movie-grid">
+      <div class="movie-tile" *ngFor="let movie of movies">
+        <h4>{{ movie.Title }}</h4>
+        <p>{{ movie.Year }}</p>
+        <p>{{ movie.imdbId }}</p>
+        <img [src]="movie.Poster" alt="{{ movie.Title }}">
+      </div>
+    </div>
+  </div>
+
+  <div class="movie-details" *ngIf="movieDetails">
+    <h3>{{ movieDetails.Title }}</h3>
+    <p><strong>Year:</strong> {{ movieDetails.Year }}</p>
+    <p><strong>Rated:</strong> {{ movieDetails.Rated }}</p>
+    <p><strong>Released:</strong> {{ movieDetails.Released }}</p>
+    <p><strong>Runtime:</strong> {{ movieDetails.Runtime }}</p>
+    <p><strong>Genre:</strong> {{ movieDetails.Genre }}</p>
+    <p><strong>Director:</strong> {{ movieDetails.Director }}</p>
+    <p><strong>Writer:</strong> {{ movieDetails.Writer }}</p>
+    <p><strong>Actors:</strong> {{ movieDetails.Actors }}</p>
+    <p><strong>Plot:</strong> {{ movieDetails.Plot }}</p>
+    <p><strong>Language:</strong> {{ movieDetails.Language }}</p>
+    <p><strong>Country:</strong> {{ movieDetails.Country }}</p>
+    <p><strong>Awards:</strong> {{ movieDetails.Awards }}</p>
+    <img [src]="movieDetails.Poster" alt="{{ movieDetails.Title }}">
+    <p><strong>Ratings:</strong></p>
+    <ul>
+      <li *ngFor="let rating of movieDetails.Ratings">
+        {{ rating.Source }}: {{ rating.Value }}
+      </li>
+    </ul>
+    <p><strong>Metascore:</strong> {{ movieDetails.Metascore }}</p>
+    <p><strong>IMDB Rating:</strong> {{ movieDetails.imdbRating }}</p>
+    <p><strong>IMDB Votes:</strong> {{ movieDetails.imdbVotes }}</p>
+    <p><strong>IMDB ID:</strong> {{ movieDetails.imdbID }}</p>
+    <p><strong>Type:</strong> {{ movieDetails.Type }}</p>
+    <p><strong>DVD:</strong> {{ movieDetails.DVD }}</p>
+    <p><strong>Box Office:</strong> {{ movieDetails.BoxOffice }}</p>
+    <p><strong>Production:</strong> {{ movieDetails.Production }}</p>
+    <p><strong>Website:</strong> {{ movieDetails.Website }}</p>
+  </div>
+    <app-movie-list></app-movie-list>
+  </div>
+  

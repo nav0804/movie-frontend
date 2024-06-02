@@ -1,0 +1,37 @@
+<!-- src/app/components/login/login.component.html -->
+<div class="login-container">
+  <h2>Login</h2>
+  <form (ngSubmit)="login(loginForm)" #loginForm="ngForm">
+    <mat-form-field>
+      <input matInput
+             placeholder="Email"
+             [(ngModel)]="email"
+             name="email"
+             required
+             email
+             #emailField="ngModel">
+      <mat-error *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)">
+        <span *ngIf="emailField.errors?.['required']">Email is required.</span>
+        <span *ngIf="emailField.errors?.['email']">Please enter a valid email address.</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput
+             type="password"
+             placeholder="Password"
+             [(ngModel)]="password"
+             name="password"
+             required
+             minlength="6"
+             #passwordField="ngModel">
+      <mat-error *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)">
+        <span *ngIf="passwordField.errors?.['required']">Password is required.</span>
+        <span *ngIf="passwordField.errors?.['minlength']">Password must be at least 6 characters long.</span>
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+  </form>
+  <p>
+    Don't have an account? <a routerLink="/register">Sign Up</a>
+  </p>
+</div>

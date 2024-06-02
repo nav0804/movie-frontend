@@ -1,0 +1,43 @@
+<!-- src/app/components/movie-list/movie-list.component.html -->
+<!-- <div *ngIf="movieLists && movieLists.length > 0"> 
+  <ul *ngIf="movieLists">
+    <li *ngFor="let movie of movieLists">
+      <h1>{{ movie.name }}</h1> -->
+<!-- <h2>{{ userDetail.username }}</h2>
+      <h3>{{ userDetail.email }}</h3> -->
+<!-- </li>
+  </ul>  -->
+<!-- </div> -->
+<!-- <div *ngIf="!movieLists || movieLists.length === 0">
+  <p>No movies found.</p>
+</div> -->
+
+
+<div>
+  <h1>Movie List</h1>
+  <ul>
+    <li *ngFor="let movie of movieLists">
+      <strong>Movie Name:</strong> {{ movie.movieName }}<br>
+      <strong>Public:</strong> {{ movie.public ? 'Yes' : 'No' }}
+      <!-- <button mat-button color="warn" >Delete</button> -->
+    </li>
+  </ul>
+  <button mat-raised-button color="primary" (click)="openAddMovieDialog()">Add Movie</button>
+</div>
+
+<ng-template #addMovieDialog>
+  <h2 mat-dialog-title>Add Movie</h2>
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput placeholder="Movie Name" [(ngModel)]="newMovieName">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="Public or Private" [(ngModel)]="newMoviePublic">
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button (click)="closeMovieDialog()">Cancel</button>
+    <button mat-button (click)="addMovie()">Add</button>
+  </mat-dialog-actions>
+</ng-template>
